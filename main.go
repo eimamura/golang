@@ -1,24 +1,21 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
+
+import "rsc.io/quote"
 
 func main() {
-	// 新しいGoroutineを起動
-	go func() {
-		for i := 0; i < 5; i++ {
-			fmt.Println("Goroutine:", i)
-			time.Sleep(100 * time.Millisecond)
-		}
-	}()
+    fmt.Println(quote.Hello())
+    hello()
+    hello2("Eimura")
+}
 
-	// 重い処理のシミュレーション（メインGoroutine）
-	for i := 0; i < 5; i++ {
-		fmt.Println("Main:     ", i)
-		time.Sleep(100 * time.Millisecond)
-	}
-	
-	fmt.Println("Done!")
+func hello() {
+	fmt.Println("Hello, World!")
+}
+
+func hello2(name string) string {
+	msg := fmt.Sprintf("Hello, %s", name)
+	fmt.Println(msg)
+	return msg
 }
